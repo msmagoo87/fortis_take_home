@@ -33,7 +33,8 @@ module "rds" {
   subnet_ids             = module.vpc.private_subnets
   vpc_security_group_ids = [aws_security_group.db.id]
   create_db_subnet_group = true
-  
+  skip_final_snapshot    = true # Set for easier cleanup, wouldn't want to do this in reality
+
   username               = "admin"
   allocated_storage      = "20"
 
