@@ -1,0 +1,5 @@
+name: fortis_part_1
+channels:
+  - defaults
+dependencies:
+  - boto3=1.29.1=py311hecd8cb5_0
