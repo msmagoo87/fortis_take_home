@@ -21,22 +21,22 @@ resource "aws_security_group_rule" "web_access" {
 
 module "rds" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "~> 6.5"
+  version = "6.11.0"
 
-  identifier             = "example-part-2"
-  engine                 = "mysql"
-  engine_version         = "8.0.36"
-  family                 = "mysql8.0"
-  major_engine_version   = "8.0"
-  instance_class         = "db.t3.micro"
+  identifier           = "example-part-2"
+  engine               = "mysql"
+  engine_version       = "8.0.36"
+  family               = "mysql8.0"
+  major_engine_version = "8.0"
+  instance_class       = "db.t3.micro"
 
   subnet_ids             = module.vpc.private_subnets
   vpc_security_group_ids = [aws_security_group.db.id]
   create_db_subnet_group = true
   skip_final_snapshot    = true # Set for easier cleanup, wouldn't want to do this in reality
 
-  username               = "admin"
-  allocated_storage      = "20"
+  username          = "admin"
+  allocated_storage = "20"
 
   tags = var.tags
 }

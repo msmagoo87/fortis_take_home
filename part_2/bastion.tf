@@ -1,6 +1,6 @@
 module "bastion" {
   source  = "cloudposse/ec2-bastion-server/aws"
-  version = "0.30.1"
+  version = "0.31.1"
 
   name                        = "example-bastion"
   subnets                     = module.vpc.public_subnets

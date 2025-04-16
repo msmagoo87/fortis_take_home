@@ -38,15 +38,11 @@ module "key_pair" {
   create_private_key = true
 }
 
-import {
-  to = aws_secretsmanager_secret.web_key
-  id = "arn:aws:secretsmanager:ca-central-1:718957135326:secret:web_key-dh9CRP"
-}
-
 resource "aws_secretsmanager_secret" "web_key" {
   name = "web_key"
 }
 
+# Generate a key pair and store it in secretsmanager so it can be placed on the bastion host
 resource "aws_secretsmanager_secret_version" "web_key" {
   secret_id     = aws_secretsmanager_secret.web_key.id
   secret_string = module.key_pair.private_key_pem
